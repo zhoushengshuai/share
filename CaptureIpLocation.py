@@ -10,8 +10,11 @@ from IPy import IP
 from geopy.geocoders import Nominatim
 
 IPSTACK_URL = 'http://api.ipstack.com/{ip}?access_key=ee2a84f55397f033d0ae1c106e7ebb34'
-CONTENT_TYPE, USER_AGENT = 'application/json', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.79 Safari/537.36'
+
+CONTENT_TYPE = 'application/json'
+USER_AGENT = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.79 Safari/537.36'
 HEADERS = {'Content-Type': CONTENT_TYPE, 'User-Agent': USER_AGENT}
+
 PROXIES = {'http': 'http://xxx.xxx.xxx.xxx:8080/', 'https': 'https://xxx.xxx.xxx.xxx:8080/'}
 TIMEOUT = 15
 
