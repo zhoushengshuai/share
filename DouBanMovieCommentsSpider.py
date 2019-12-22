@@ -63,7 +63,6 @@ class DouBanMovieCommentsSpider(object):
         self.driver.get(url)
         WebDriverWait(self.driver, 15).until(EC.element_to_be_clickable((By.XPATH, DOUBAN_LOGIN_XPATH))).click()
         WebDriverWait(self.driver, 15).until(EC.element_to_be_clickable((By.XPATH, DOUBAN_PASSWORD_LOGIN_XPATH))).click()
-
         WebDriverWait(self.driver, 15).until(EC.visibility_of_element_located((By.XPATH, DOUBAN_USERNAME_INPUT_XPATH))).send_keys(DOUBAN_USERNAME)
         WebDriverWait(self.driver, 15).until(EC.presence_of_element_located((By.XPATH, DOUBAN_PASSWORD_INPUT_XPATH))).send_keys(DOUBAN_PASSWORD)
         WebDriverWait(self.driver, 15).until(EC.element_to_be_clickable((By.XPATH, DOUBAN_LOGIN_BUTTON_XPATH))).click()
