@@ -1,6 +1,6 @@
 # coding = utf-8
 
-__author__ = 'shengshuai.zhou@nokia-sbell.com'
+__author__ = 'Zhou Shengshuai'
 __version__ = '1.0'
 
 import logging
