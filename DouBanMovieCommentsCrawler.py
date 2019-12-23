@@ -26,7 +26,7 @@ DOUBAN_LOGIN_URL = 'http://accounts.douban.com/login'
 DOUBAN_LOGIN_ACCOUNT1 = ('254392398@qq.com', 'Shuai@903')
 DOUBAN_LOGIN_ACCOUNT2 = ('zhoushengshuai2007@163.com', 'Shuai@903')
 
-DOUBAN_MOVIE_COMMENTS_FILE = 'c:/task/douban_movie_comments_25917973.txt'
+DOUBAN_MOVIE_COMMENTS_FILE = r'c:/study/output/douban_movie_comments_25917973.txt'
 
 
 class DouBanMovieCommentsCrawler(object):

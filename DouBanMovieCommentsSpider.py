@@ -13,7 +13,7 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.wait import WebDriverWait
 
-DOUBAN_MOVIE_COMMENTS_FILE = 'c:/task/douban_movie_comments_25917973.txt'
+DOUBAN_MOVIE_COMMENTS_FILE = r'c:/study/output/douban_movie_comments_25917973.txt'
 DOUBAN_MOVIE_COMMENTS_URL = 'https://movie.douban.com/subject/25917973/comments?status=P'
 DOUBAN_MOVIE_COMMENTS_XPATH = '//div[@id="comments"]/div[{index}]/div[@class="comment"]/p/span[@class="short"]'
 DOUBAN_MOVIE_ONE_PAGE_COMMENTS_COUNT = 20
