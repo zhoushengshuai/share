@@ -79,7 +79,7 @@ class DouBanMovieCommentsSpider(object):
             short_comment_text = short_comment_element.text
             one_page_short_comments.append(short_comment_text)
             logging.info('Short Comment: \n{0}'.format(short_comment_text))
-            sleep(1)
+            sleep(0.5)
         self.write_content_to_file('\n'.join(one_page_short_comments), DOUBAN_MOVIE_COMMENTS_FILE)
 
     # 翻页递归爬取短评数据
@@ -87,7 +87,7 @@ class DouBanMovieCommentsSpider(object):
         self.write_short_comments()
         try:
             WebDriverWait(self.driver, 15).until(EC.element_to_be_clickable((By.XPATH, DOUBAN_MOVIE_NEXT_PAGE_XPATH))).click()
-            sleep(3)
+            sleep(1)
             self.crawl_short_comments()
         except TimeoutException:
             self.quit_douban()
