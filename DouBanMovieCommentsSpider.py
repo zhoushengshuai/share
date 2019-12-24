@@ -33,9 +33,9 @@ class DouBanMovieCommentsSpider(object):
         logging.basicConfig(format='%(asctime)s %(filename)s[line:%(lineno)d]%(levelname)s - %(message)s', datefmt='%Y-%m-%d %I:%M:%S %p', level=logging.INFO)
         self.check_clean_file(DOUBAN_MOVIE_COMMENTS_FILE)
         try:
-            self.driver = webdriver.Firefox()
-        except WebDriverException:
             self.driver = webdriver.Chrome()
+        except WebDriverException:
+            self.driver = webdriver.Firefox()
         self.driver.implicitly_wait(15)
         self.driver.maximize_window()
 
