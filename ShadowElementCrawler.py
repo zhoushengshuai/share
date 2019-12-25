@@ -43,7 +43,7 @@ class ShadowElementCrawler(object):
         main_header_element = self.expand_shadow_element(app_element.find_element_by_css_selector(MAIN_HEADER_CSS))
         WebDriverWait(main_header_element, 15).until(EC.element_to_be_clickable((By.CSS_SELECTOR, LOGIN_BUTTON_CLASS))).click()
 
-    def sign_in_input(self, username, password):
+    def sign_in_submit(self, username, password):
         WebDriverWait(self.driver, 15).until(EC.visibility_of_element_located((By.XPATH, USERNAME_XPATH))).send_keys(username)
         WebDriverWait(self.driver, 15).until(EC.visibility_of_element_located((By.XPATH, PASSWORD_XPATH))).send_keys(password)
         WebDriverWait(self.driver, 15).until(EC.element_to_be_clickable((By.XPATH, SIGN_IN_XPATH))).click()
@@ -52,7 +52,7 @@ class ShadowElementCrawler(object):
         logging.info('Sign in {0} with username [{1}] and password [{2}]'.format(url, username, password))
         self.driver.get(url)
         self.sign_in_click()
-        self.sign_in_input(username, password)
+        self.sign_in_submit(username, password)
 
     def log_out(self):
         sleep(3)
