@@ -4,3 +4,4 @@
 # DouBan Movie Comments Spider
 # Shadow Element Crawler
 # Repository Crawler
+# Sentiment Analyzer

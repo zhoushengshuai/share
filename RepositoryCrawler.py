@@ -13,7 +13,7 @@ from selenium.webdriver.support.wait import WebDriverWait
 
 REPOSITORY_URL = 'http://127.0.0.1:30317/ui'
 REPOSITORY_USERNAME = 'admin'
-REPOSITORY_PASSWORD = 'Yh123$%^'
+REPOSITORY_PASSWORD = 'Shuai_123'
 
 REPOSITORY_USERNAME_XPATH = '//input[@name="username"]'
 REPOSITORY_PASSWORD_XPATH = '//input[@name="password"]'
