@@ -27,7 +27,7 @@ def get_logger(name):
     return logger
 
 
-LOGGER = get_logger('HealthCheckExcel')
+LOGGER = get_logger('HealthCheckKeyword')
 
 
 def check_path(path):
