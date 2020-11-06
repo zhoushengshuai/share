@@ -98,7 +98,7 @@ class DouBanMovieCommentsCrawler(object):
         logging.info('It is ongoing to crawl url [{0}]'.format(url))
         try:
             response = self.session.request(method, url, data=data, headers=dict(HEADERS, **options_headers), proxies=proxies)
-            logging.info('Finished to crawl url [{0}] with status code [{0}]'.format(url, response.status_code))
+            logging.info('Finished to crawl url [{0}] with status calculation [{0}]'.format(url, response.status_code))
             if response.status_code == 200:
                 return response.text
         except ConnectionError:
