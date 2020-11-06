@@ -13,8 +13,17 @@ LOG_FILE = os.path.join(WORK_DIR, 'result.log')
 OIB_DB_DIR = os.path.join(WORK_DIR, 'DB')
 OIB_NODB_DIR = os.path.join(WORK_DIR, 'noDB')
 EXCEL_SUFFIX = r'.xls'
-SEPARATOR_LINE = '--------------------------------------------------------------------------------'
+
 KEYWORDS = ['MASTER', 'SLAVE', 'WHITELIST', 'BLACKLIST']
+
+MEASUREMENT_SHEET = 'Measurement List'
+MEASUREMENT_COLUMNS = ['ID', 'Measurement Name', 'Description']
+
+COUNTER_SHEET = 'Counter List'
+COUNTER_COLUMNS = ['ID', 'Counter Name', 'Description']
+
+ALARM_SHEET = 'Alarm List'
+ALARM_COLUMNS = ['ID', 'Alarm Name', 'Description']
 
 
 def get_logger(name):
@@ -52,7 +61,6 @@ def parse_excel(file, sheet, columns):
             dataFrame = pandas.DataFrame(data=data, columns=columns)
             contents = dataFrame.dropna().values.tolist()
             LOGGER.debug(contents)
-            LOGGER.debug(SEPARATOR_LINE)
     return contents
 
 
@@ -89,6 +97,6 @@ def main(directory, sheet, columns, keywords):
 
 
 if __name__ == '__main__':
-    main(directory=OIB_DB_DIR, sheet='Measurement List', columns=['ID', 'Measurement Name', 'Description'], keywords=KEYWORDS)
-    main(directory=OIB_DB_DIR, sheet='Counter List', columns=['ID', 'Counter Name', 'Description'], keywords=KEYWORDS)
-    main(directory=OIB_NODB_DIR, sheet='Alarm List', columns=['ID', 'Alarm Name', 'Description'], keywords=KEYWORDS)
+    main(directory=OIB_DB_DIR, sheet=MEASUREMENT_SHEET, columns=MEASUREMENT_COLUMNS, keywords=KEYWORDS)
+    main(directory=OIB_DB_DIR, sheet=COUNTER_SHEET, columns=COUNTER_COLUMNS, keywords=KEYWORDS)
+    main(directory=OIB_NODB_DIR, sheet=ALARM_SHEET, columns=ALARM_COLUMNS, keywords=KEYWORDS)
