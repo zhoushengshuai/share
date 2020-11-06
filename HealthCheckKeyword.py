@@ -89,6 +89,6 @@ def main(directory, sheet, columns, keywords):
 
 
 if __name__ == '__main__':
-    main(directory=OIB_DB_DIR, sheet='Measurement List', columns=['NetAct ID', 'Measurement name', 'OMeS ID', 'UI name', 'Description'], keywords=KEYWORDS)
-    main(directory=OIB_DB_DIR, sheet='Counter List', columns=['ID', 'NE counter name', 'UI name', 'Description'], keywords=KEYWORDS)
-    main(directory=OIB_NODB_DIR, sheet='Alarm List', columns=['Alarm number', 'Alarm text', 'Probable cause', 'Meaning', 'Effect', 'Meaning', 'Supplementary information fields', 'Instructions'], keywords=KEYWORDS)
+    main(directory=OIB_DB_DIR, sheet='Measurement List', columns=['ID', 'Measurement Name', 'Description'], keywords=KEYWORDS)
+    main(directory=OIB_DB_DIR, sheet='Counter List', columns=['ID', 'Counter Name', 'Description'], keywords=KEYWORDS)
+    main(directory=OIB_NODB_DIR, sheet='Alarm List', columns=['ID', 'Alarm Name', 'Description'], keywords=KEYWORDS)
