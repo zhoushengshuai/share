@@ -10,8 +10,8 @@ import pandas
 
 WORK_DIR = os.path.join(os.path.dirname(__file__))
 LOG_FILE = os.path.join(WORK_DIR, 'result.log')
-OIB_DB_DIR = os.path.join(WORK_DIR, 'DB')
-OIB_NODB_DIR = os.path.join(WORK_DIR, 'noDB')
+DB_DIR = os.path.join(WORK_DIR, 'DB')
+NODB_DIR = os.path.join(WORK_DIR, 'noDB')
 EXCEL_SUFFIX = r'.xls'
 
 KEYWORDS = ['MASTER', 'SLAVE', 'WHITELIST', 'BLACKLIST']
@@ -30,7 +30,7 @@ def get_logger(name):
     logger = logging.getLogger(name)
     logger.setLevel(logging.INFO)
     # formatter = logging.Formatter(fmt='%(asctime)s %(filename)s[line:%(lineno)d]%(levelname)s - %(message)s', datefmt='%Y-%m-%d %I:%M:%S %p')
-    formatter = logging.Formatter(fmt='%(asctime)s - %(message)s', datefmt='%Y-%m-%d %I:%M:%S %p')
+    formatter = logging.Formatter(fmt='%(asctime)s %(levelname)s - %(message)s', datefmt='%Y-%m-%d %I:%M:%S %p')
     fileHandler = logging.FileHandler(filename=LOG_FILE, mode='w')
     fileHandler.setFormatter(formatter)
     logger.addHandler(fileHandler)
@@ -82,7 +82,7 @@ def find_keyword(file, columns, contents, keywords):
         idContent = columnContents.get(idColumn)
         for title, value in columnContents.items():
             for keyword in keywords:
-                if str(value).upper().find(keyword) != -1: LOGGER.error('{0} [{1} = {2}]: Find keyword "{3}" in {4} = {5}'.format(file, idColumn, idContent, keyword, title, value))
+                if str(value).upper().find(keyword) != -1: LOGGER.error('{0} [{1} = {2}]: Find keyword [{3}] in [{4} = {5}]'.format(file, idColumn, idContent, keyword, title, value))
 
 
 def find_keywords(columns, allContents, keywords):
@@ -98,6 +98,6 @@ def main(directory, sheet, columns, keywords):
 
 
 if __name__ == '__main__':
-    main(directory=OIB_DB_DIR, sheet=MEASUREMENT_SHEET, columns=MEASUREMENT_COLUMNS, keywords=KEYWORDS)
-    main(directory=OIB_DB_DIR, sheet=COUNTER_SHEET, columns=COUNTER_COLUMNS, keywords=KEYWORDS)
-    main(directory=OIB_NODB_DIR, sheet=ALARM_SHEET, columns=ALARM_COLUMNS, keywords=KEYWORDS)
+    main(directory=DB_DIR, sheet=MEASUREMENT_SHEET, columns=MEASUREMENT_COLUMNS, keywords=KEYWORDS)
+    main(directory=DB_DIR, sheet=COUNTER_SHEET, columns=COUNTER_COLUMNS, keywords=KEYWORDS)
+    main(directory=NODB_DIR, sheet=ALARM_SHEET, columns=ALARM_COLUMNS, keywords=KEYWORDS)
