@@ -29,7 +29,8 @@ ALARM_COLUMNS = ['ID', 'Alarm Name', 'Description']
 def get_logger(name):
     logger = logging.getLogger(name)
     logger.setLevel(logging.INFO)
-    formatter = logging.Formatter(fmt='%(asctime)s %(filename)s[line:%(lineno)d]%(levelname)s - %(message)s', datefmt='%Y-%m-%d %I:%M:%S %p')
+    # formatter = logging.Formatter(fmt='%(asctime)s %(filename)s[line:%(lineno)d]%(levelname)s - %(message)s', datefmt='%Y-%m-%d %I:%M:%S %p')
+    formatter = logging.Formatter(fmt='%(asctime)s - %(message)s', datefmt='%Y-%m-%d %I:%M:%S %p')
     fileHandler = logging.FileHandler(filename=LOG_FILE, mode='w')
     fileHandler.setFormatter(formatter)
     logger.addHandler(fileHandler)
@@ -65,14 +66,14 @@ def parse_excel(file, sheet, columns):
 
 
 def parse_excels(files, sheet, columns):
-    allContents = []
+    allContents = {}
     for file in files:
         contents = parse_excel(file=file, sheet=sheet, columns=columns)
-        contents and allContents.append(contents)
+        if contents: allContents[os.path.basename(file)] = contents
     return allContents
 
 
-def find_keyword(columns, contents, keywords):
+def find_keyword(file, columns, contents, keywords):
     LOGGER.debug('Find keywords {0} for columns {1}'.format(keywords, columns))
     for content in contents:
         if len(columns) != len(content): raise AssertionError('Not match between columns and contents')
@@ -81,12 +82,12 @@ def find_keyword(columns, contents, keywords):
         idContent = columnContents.get(idColumn)
         for title, value in columnContents.items():
             for keyword in keywords:
-                if str(value).upper().find(keyword) != -1: LOGGER.error('{0} = {1}: Find keyword "{2}" in {3} = {4}'.format(idColumn, idContent, keyword, title, value))
+                if str(value).upper().find(keyword) != -1: LOGGER.error('{0} [{1} = {2}]: Find keyword "{3}" in {4} = {5}'.format(file, idColumn, idContent, keyword, title, value))
 
 
 def find_keywords(columns, allContents, keywords):
-    for contents in allContents:
-        find_keyword(columns=columns, contents=contents, keywords=keywords)
+    for file, contents in allContents.items():
+        find_keyword(file=file, columns=columns, contents=contents, keywords=keywords)
 
 
 def main(directory, sheet, columns, keywords):
